@@ -16,8 +16,16 @@ root.title("Fahrenheit to Celsius")
 
 frame = ttk.Frame(root, padding='3 3 12 12')
 frame.grid(column=0, row=0, sticky=(N,S,E,W))
-frame.columnconfigure(0, weight=1) # for each pixel, increase frame by 1
-frame.rowconfigure(0, weight=1) # for each pixel, increase frame size by 1
+root.columnconfigure(0, weight=1) # for each pixel, increase frame by 1
+root.rowconfigure(0, weight=1) # for each pixel, increase frame size by 1
+
+for col in range(1, 4):
+    frame.columnconfigure(col, weight=1)
+    
+for row in range(1, 4):
+    frame.rowconfigure(row, weight=1)
+
+
 
 fahrenheit = StringVar()
 celsius = StringVar()
@@ -40,13 +48,11 @@ e_label.grid(column=1, row=2, sticky=(E))
 d_label = ttk.Label(frame, text="degrees C")
 d_label.grid(column=3, row=2, sticky=(W))
 
+for child in frame.winfo_children():
+    child.grid_configure(padx=5,pady=5)
 
-
-
-
-
-
-
+f_entry.focus()
+root.bind("<Return>", calculate)
 
 ####
 root.mainloop()
