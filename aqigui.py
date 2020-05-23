@@ -7,14 +7,14 @@ root.title('AQI GUI')
 root.columnconfigure(0, weight=1) # for each pixel, increase frame by 1
 root.rowconfigure(0, weight=1) # for each pixel, increase frame size by 1
 # root.geometry('900x400')
-root.config(bg='#F3FCF0')
+root.config(bg='#f3fcf0')
 
 # https://coolors.co/540d6e-ee4266-ffd23f-f3fcf0-1f271b
 
-s = ttk.Style()
-s.configure('new.TFrame', background='#7AC5CD')
+# s = ttk.Style()
+# s.configure('bg.TFrame', background='#1F271B'), style='bg.TFrame'
 
-frame = ttk.Frame(root, padding="20", style='new.TFrame')
+frame = ttk.Frame(root, padding="20")
 frame.grid(row=0, column=0)
 frame.configure(borderwidth=2)
 
@@ -54,7 +54,7 @@ def calculate_AQI(*args):
         r_label['text'] = 'AQI: {0}'.format(calculated[0])
         st_label['text'] = '' # Clear the error label (no error!)
     except ValueError:
-        st_label['text'] = 'Please check input values'
+        st_label['text'] = 'Please check input values!'
         r_label['text'] = 'AQI: Error!'
 
 ## Column 1 Items
