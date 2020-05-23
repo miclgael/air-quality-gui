@@ -9,6 +9,7 @@ root.rowconfigure(0, weight=1) # for each pixel, increase frame size by 1
 # root.geometry('900x400')
 root.config(bg='#F3FCF0')
 
+# https://coolors.co/540d6e-ee4266-ffd23f-f3fcf0-1f271b
 
 s = ttk.Style()
 s.configure('new.TFrame', background='#7AC5CD')
