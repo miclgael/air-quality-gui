@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import Tk, ttk
+import operator
 
 ## TK Setup
 root = Tk()
@@ -19,6 +20,29 @@ frame.grid(row=0, column=0)
 frame.configure(borderwidth=2)
 
 frame['relief'] = 'groove'
+
+def frame_size(e):
+    if e.width <= 650:
+        # print('FS', e.width, 550, '<=') ## <- Debug!
+        responsive_labels(e, 550, operator.lt)
+ 
+def window_size(e):
+    if e.width > 650:
+        # print('WS', e.width, 550, '<=') ## <- Debug!
+        responsive_labels(e, 550, operator.lt)
+
+def responsive_labels(e, breakpoint, relate):
+    bp = relate(e.width, breakpoint)
+    # print(bp)
+    ## Before Labels
+    o_label['text'] = "O\u2083  " if bp else "Ozone: "
+    s_label['text'] = "SO\u2082 " if bp else "Sulfur Dioxide: "
+    p_label['text'] = "Particles < 2.5μm: " if bp else "Particles less than 2.5 micrometer diameter: "
+
+    ## After Labels
+    o_after_label['text'] = "parts/100m" if bp else "parts per hundred million"
+    s_after_label['text'] = "parts/100m" if bp else "parts per hundred million"
+    p_after_label['text'] = "μg per M\u00b3" if bp else "micrograms per cubic metre"
 
 def calculate_AQI(*args):
     """Returns the highest calculated result of the given List
@@ -59,13 +83,13 @@ def calculate_AQI(*args):
 
 ## Column 1 Items
 o_label = ttk.Label(frame, background='#FFD23F', foreground="#1F271B")
-o_label.grid(column=1, row=1, sticky='N,S,E,W')
+o_label.grid(column=1, row=1, sticky='E')
 
 s_label = ttk.Label(frame, background='#EE4266', foreground="#F3FCF0")
-s_label.grid(column=1, row=2, sticky='N,S,E,W')
+s_label.grid(column=1, row=2, sticky='E')
 
-p_label = ttk.Label(frame, background='#540D6E', foreground="#F3FCF0")
-p_label.grid(column=1, row=3, sticky='N,S,E,W')
+p_label = Message(frame, background='#540D6E', foreground="#F3FCF0", width=200)
+p_label.grid(column=1, row=3, sticky='E')
 
 o_label['text'] = "Ozone: "
 s_label['text'] = "Sulfur Dioxide: "
@@ -120,27 +144,14 @@ for child in frame.winfo_children():
 
 # Make elastic col/rows
 for col in range(1, 3):
-    frame.columnconfigure(col, weight=1, minsize=225)
+    frame.columnconfigure(col, weight=1) #, minsize=225
 
 for row in range(1, 6):
     frame.rowconfigure(row, weight=1)
 
 ##################################################
-root.bind('<Return>',calculate_AQI)
+frame.bind('<Configure>', frame_size)
+root.bind('<Configure>', window_size)
+root.bind('<Return>', calculate_AQI)
 
-
-
-def window_size(e):
-    print(e.width)
-    ## Before Labels
-    o_label['text'] = "O\u2083  " if e.width < 550 else "Ozone: "
-    s_label['text'] = "SO\u2082 " if e.width < 550 else "Sulfur Dioxide: "
-    p_label['text'] = "Particles < 2.5μm: " if e.width < 550 else "Particles less than 2.5 micrometer diameter: "
-
-    ## After Labels
-    o_after_label['text'] = "parts per 100m" if e.width < 550 else "parts per hundred million"
-    s_after_label['text'] = "parts per 100m" if e.width < 550 else "parts per hundred million"
-    p_after_label['text'] = "μg per M\u00b3" if e.width < 550 else "micrograms per cubic metre"
- 
-frame.bind('<Configure>', window_size)
 root.mainloop()
