@@ -75,7 +75,7 @@ def calculate_AQI(*args):
             calculated.append((100 * readings[count]) / standards[count])           
             calculated.sort(reverse = True)  # Reorder the List from highest to lowest values
 
-        r_label['text'] = 'AQI: {0}'.format(calculated[0])
+        r_label['text'] = 'AQI: {0}'.format(round(calculated[0], 2))
         st_label['text'] = '' # Clear the error label (no error!)
     except ValueError:
         st_label['text'] = 'Please check input values!'
