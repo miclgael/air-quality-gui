@@ -43,11 +43,11 @@ $ python3 aqigui.py
 
 ## Walk-through Guide
 
-The program will first request the number of air quality measurements that will be entered in the interaction with the program.
+The program presents the user with three (3) labelled fields in which to enter air quality measurements for a single site.
 
-It will then loop over the given input to collect the amount of ozone (parts per hundred million), sulfur dioxide (parts per hundred million), and particles less than 2.5 micrometers diameter (micrograms per cubic metre) that were measured for each site.
+The program takes the given inputs to collect the amount of ozone (parts per hundred million), sulfur dioxide (parts per hundred million), and particles less than 2.5 micrometers diameter (micrograms per cubic metre).
 
-At the end of each cycle of inputs, the program will output the air quality index (AQI) for that measurement (using the calculation below).
+Upon pressing the 'Calculate AQI' button, the program will output the air quality index (AQI) for that measurement (using the calculation below).
 
 ## Calculation Details
 
