@@ -37,10 +37,9 @@ $ python3 aqigui.py
 
 ![](images/AQIGUI_state1.png) <br>_The program producing a result_
 
+![](images/AQIGUI_state2.png) <br>_The program resized for smaller screens_
+
 ![](images/AQIGUI_state_err.png) <br>_The program throwing an error_
-
-![](images/AQI_GUI_state2.png.png) <br>_The program resized for smaller screens_
-
 
 ## Walk-through Guide
 
