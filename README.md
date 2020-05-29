@@ -33,11 +33,11 @@ To run the program, enter the following commands into your terminal prompt
 $ python3 aqigui.py
 ```
 
-![](images/AQIGUI_state0.png)
+![](images/AQIGUI_state0.png)_The program in its default state_
 
-![](images/AQIGUI_state1.png)
+![](images/AQIGUI_state1.png)_The program producing a result_
 
-![](images/AQIGUI_state_err.png)
+![](images/AQIGUI_state_err.png)_The program throwing an error_
 
 
 ## Walk-through Guide
