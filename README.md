@@ -1,6 +1,6 @@
 # AQI Pollutant Calculator (GUI)
 
-This is a program with a Graphical User Interface, designed for use by Codetown council workers in various parts of the city to collect air quality information, which will be used to help make informed decisions for future changes in the town.
+This GUI version of the AQI calculator program was designed for use by Codetown council workers in various parts of the city to collect air quality information, which will be used to help make informed decisions for future changes in the town.
 
 ## Table of Contents
 
@@ -30,17 +30,15 @@ To run the program, enter the following commands into your terminal prompt
 ## Example Usage
 
 ```bash
-$ python3 air_quality.py
-Please enter number of readings: <USER_INPUT>
----------
-Reading 1:
----------
-    Amount of ozone recorded (parts per hundred million): <USER_INPUT>
-    Amount of sulfur dioxide recorded (parts per hundred million): <USER_INPUT>
-    Amount of particles less than 2.5 micrometres diameter recorded (micrograms per cubic metre): <USER_INPUT>
-
-    AQI:  <CALCULATED_ANSWER>
+$ python3 aqigui.py
 ```
+
+![](images/AQIGUI_state0.png)
+
+![](images/AQIGUI_state1.png)
+
+![](images/AQIGUI_state_err.png)
+
 
 ## Walk-through Guide
 
