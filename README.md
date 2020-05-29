@@ -64,3 +64,6 @@ _The following table can be used to reference standard pollutant values:_
 ## Acknowledgement
 
 Thanks to [@dpaul4](mailto:dpaul4@une.edu.au) for providing the AQI calculation algorithm
+
+Colour palette generated with [Coolors.co](https://coolors.co/540d6e-ee4266-ffd23f-f3fcf0-1f271b)
+

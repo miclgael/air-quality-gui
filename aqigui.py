@@ -1,45 +1,58 @@
+import operator
 from tkinter import *
 from tkinter import Tk, ttk
-import operator
 
-## TK Setup
+# Initialise TK instance
 root = Tk()
 root.title('AQI GUI')
 root.columnconfigure(0, weight=1) # for each pixel, increase frame by 1
 root.rowconfigure(0, weight=1) # for each pixel, increase frame size by 1
-# root.geometry('900x400')
 root.config(bg='#f3fcf0')
 
-# https://coolors.co/540d6e-ee4266-ffd23f-f3fcf0-1f271b
-
-# s = ttk.Style()
-# s.configure('bg.TFrame', background='#1F271B'), style='bg.TFrame'
-
+# Initialise Frame
 frame = ttk.Frame(root, padding="20")
 frame.grid(row=0, column=0)
 frame.configure(borderwidth=2)
-
 frame['relief'] = 'groove'
 
+# Define functions
 def frame_size(e):
+    """Check the current width of the frame and perform actions
+
+    Arguments:
+        e {dict} -- "event" object of the <Configure> event
+    """
     if e.width <= 650:
-        # print('FS', e.width, 550, '<=') ## <- Debug!
         responsive_labels(e, 550, operator.lt)
  
 def window_size(e):
+    """Check the current width of the window and perform actions
+
+    Arguments:
+        e {dict} -- "event" object of the <Configure> event
+    """
     if e.width > 650:
-        # print('WS', e.width, 550, '<=') ## <- Debug!
         responsive_labels(e, 550, operator.lt)
 
 def responsive_labels(e, breakpoint, relate):
-    bp = relate(e.width, breakpoint)
-    # print(bp)
-    ## Before Labels
+    """Swap between short and long label descriptions
+
+    Credit: Subscript/Superscript snippet found at: 
+            https://stackoverflow.com/a/34944675
+
+    Arguments:
+        e {dict} -- "event" object of the <Configure> event
+        breakpoint {int} -- pixel value, the point at which the content "breaks"
+        relate -- "less than" comparison method (See: https://docs.python.org/3.8/library/operator.html#operator.lt)
+    """
+    bp = relate(e.width, breakpoint) # `True` if width smaller than breakpoint.
+
+    ## 'Before' Labels
     o_label['text'] = "O\u2083  " if bp else "Ozone: "
     s_label['text'] = "SO\u2082 " if bp else "Sulfur Dioxide: "
     p_label['text'] = "Particles < 2.5μm: " if bp else "Particles less than 2.5 micrometer diameter: "
 
-    ## After Labels
+    ## 'After' Labels
     o_after_label['text'] = "parts/100m" if bp else "parts per hundred million"
     s_after_label['text'] = "parts/100m" if bp else "parts per hundred million"
     p_after_label['text'] = "μg per M\u00b3" if bp else "micrograms per cubic metre"
@@ -60,7 +73,7 @@ def calculate_AQI(*args):
         ]
         # Immutable Tuple
         standards = (
-            8.0,  # Ozone
+            8.0, # Ozone
             20,  # Sulfur Dioxide
             25,  # Particles
         )
@@ -91,10 +104,10 @@ s_label.grid(column=1, row=2, sticky='E')
 p_label = Message(frame, background='#540D6E', foreground="#F3FCF0", width=200)
 p_label.grid(column=1, row=3, sticky='E')
 
+## Set initial text values for labels, overwritten later
 o_label['text'] = "Ozone: "
 s_label['text'] = "Sulfur Dioxide: "
 p_label['text'] = "Particles less than 2.5 micrometer diameter: "
-
 
 ## Column 2 Items
 o_var = StringVar()
@@ -131,11 +144,12 @@ s_after_label.grid(column=3, row=2, sticky='N,S,E,W')
 p_after_label = ttk.Label(frame)
 p_after_label.grid(column=3, row=3)
 
-## Spacer Item
+## Set initial text values for labels, overwritten later
 o_after_label['text'] = "parts per hundred million"
 s_after_label['text'] = "parts per hundred million"
 p_after_label['text'] = "micrograms per cubic metre"
 
+# Make the first text entry have focus on launch
 o_entry.focus()
 
 # Add space between cells
@@ -150,8 +164,8 @@ for row in range(1, 6):
     frame.rowconfigure(row, weight=1)
 
 ##################################################
-frame.bind('<Configure>', frame_size)
-root.bind('<Configure>', window_size)
-root.bind('<Return>', calculate_AQI)
+frame.bind('<Configure>', frame_size) # <- listener for frame width
+root.bind('<Configure>', window_size) # <- listener for root  width
+root.bind('<Return>', calculate_AQI)  # <- listener "Enter"
 
 root.mainloop()
