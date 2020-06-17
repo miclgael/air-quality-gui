@@ -1,5 +1,7 @@
 # AQI Pollutant Calculator (GUI)
 
+> 💡 This simple python program was written for university assignment and serves no real-world purpose. This is part 2 of a series, [part i](https://github.com/miclgael/air-quality) and [part ii](https://github.com/miclgael/air-quality-fs) are available if interested.
+
 This GUI version of the AQI calculator program was designed for use by Codetown council workers in various parts of the city to collect air quality information, which will be used to help make informed decisions for future changes in the town.
 
 ## Table of Contents
