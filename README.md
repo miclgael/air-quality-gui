@@ -2,7 +2,7 @@
 
 > 💡 This simple python program was written for a first year comp-sci assignment and serves no real-world purpose. This is part 3 of a series, [part 1](https://github.com/miclgael/air-quality) and [part 2](https://github.com/miclgael/air-quality-fs) are available if interested.
 
-This GUI version of the AQI calculator program was designed for use by Codetown council workers in various parts of the city to collect air quality information, which will be used to help make informed decisions for future changes in the town.
+This GUI version of the AQI calculator program was designed for use by Codetown™️ council workers in various parts of the city to collect air quality information, which will be used to help make informed decisions for future changes in the town.
 
 ## Table of Contents
 
